@@ -25,7 +25,7 @@ export default function UploadPage() {
 
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5000/upload", {
+      const res = await fetch("https://excel-node-js.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
