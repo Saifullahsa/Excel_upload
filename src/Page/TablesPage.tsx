@@ -22,7 +22,7 @@ export default function TablesPage() {
 
   const fetchTables = async () => {
     try {
-      const res = await fetch("http://localhost:5000/tables");
+      const res = await fetch("https://excel-node-js.onrender.com/tables");
       const data = await res.json();
       setTables(data);
     } catch {
@@ -34,7 +34,7 @@ export default function TablesPage() {
     setSelectedTable(tableName);
     setCurrentPage(1); 
     try {
-      const res = await fetch(`http://localhost:5000/tables/${tableName}`);
+      const res = await fetch(`https://excel-node-js.onrender.com/tables/${tableName}`);
       const data = await res.json();
       setTableRows(data.data || data);
     } catch {
@@ -50,7 +50,7 @@ export default function TablesPage() {
     if (!window.confirm(`Are you sure you want to delete the table "${tableName}"`)) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/tables/${tableName}`, { method: "DELETE" });
+      const res = await fetch(`https://excel-node-js.onrender.com/tables/${tableName}`, { method: "DELETE" });
       const data = await res.json();
       if (res.ok) {
         alert(data.message);
@@ -77,7 +77,7 @@ export default function TablesPage() {
       const primaryKey = Object.keys(editRow)[0];
       const id = editRow[primaryKey];
 
-      const res = await fetch(`http://localhost:5000/tables/${selectedTable}/${id}`, {
+      const res = await fetch(`https://excel-node-js.onrender.com/tables/${selectedTable}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editData),
@@ -161,7 +161,7 @@ export default function TablesPage() {
                 <button
                   onClick={async () => {
                     try {
-                      const res = await fetch(`http://localhost:5000/export/${selectedTable}`);
+                      const res = await fetch(`https://excel-node-js.onrender.com/export/${selectedTable}`);
                       if (!res.ok) throw new Error("Export failed");
                       const blob = await res.blob();
                       const url = window.URL.createObjectURL(blob);
