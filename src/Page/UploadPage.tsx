@@ -63,7 +63,7 @@ export default function UploadPage() {
 
        <form
         onSubmit={handleUpload}
-        className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-lg border border-gray-200"
+        className="bg-white/30 shadow-lg rounded-2xl p-6 w-full max-w-lg border border-gray-200"
       >
        
         <label className="w-full mb-6 cursor-pointer">
