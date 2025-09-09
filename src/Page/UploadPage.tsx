@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Upload } from "lucide-react";
 import { RiFolderUploadFill } from "react-icons/ri";
-import Img from '../Page/abstract-navy-red-background-design-sr17012401-1705501852665-cover.webp';
+import Img from '../Page/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjU0NmJhdGNoMy1teW50LTM0LWJhZGdld2F0ZXJjb2xvcl8xLmpwZw.webp'
 import { useNavigate } from "react-router-dom";
 
   const Rifo  = RiFolderUploadFill as React.ComponentType
@@ -45,7 +45,7 @@ export default function UploadPage() {
 
   return (
     <div
-      style={{
+    style={{
         backgroundImage: `url(${Img})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
