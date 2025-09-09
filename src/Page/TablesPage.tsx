@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Table } from "lucide-react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import Imgs from '../Page/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjU0NmJhdGNoMy1teW50LTM0LWJhZGdld2F0ZXJjb2xvcl8xLmpwZw.webp'
+
 import Loading from './Loading';
 
 export default function TablesPage() {
@@ -107,7 +109,17 @@ export default function TablesPage() {
   const totalPages = Math.ceil(tableRows.length / rowsPerPage);
 
   return (
-    <div className="p-8 min-h-screen bg-gray-50">
+    <div 
+       style={{
+        backgroundImage: `url(${Imgs})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        width: "100%",
+        minHeight: "100vh",
+      }}
+      className="p-8 min-h-screen bg-gray-50">
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold mb-6 flex items-center gap-2 text-gray-800 mt-5">
           <Table className="w-8 h-8 text-blue-600" />
@@ -193,22 +205,29 @@ export default function TablesPage() {
             <table className="min-w-full text-sm text-left">
               <thead className="bg-gray-100 text-gray-700 font-semibold">
                 <tr>
-                  {Object.keys(tableRows[0]).map((col) => (
-                    <th key={col} className="px-4 py-2 border-b">
+                    {Object.keys(tableRows[0]).map((col) => {
+                    if(col !='table_id'){
+                   return <th key={col} className="px-4 py-2 border-b">
                       {col}
                     </th>
-                  ))}
+                  }
+                 })}
                   <th className="px-4 py-2 border-b">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {currentRows.map((row, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition border-b last:border-none">
-                    {Object.values(row).map((val, i) => (
-                      <td key={i} className="px-4 py-2">
-                        {val === null ? "—" : String(val)}
-                      </td>
-                    ))}
+                    {Object.entries(row).map(([key, val], i) => {
+      if (key !== "table_id") {
+        return (
+          <td key={i} className="px-4 py-2">
+            {val === null ? "—" : String(val)}
+          </td>
+        );
+      }
+      return null; 
+    })}
                     <td className="px-4 py-2">
                       <button
                         onClick={() => handleEdit(row)}
